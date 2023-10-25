@@ -29,11 +29,14 @@ const Post = mongoose.model(
 );
 
 export default async function handler(req, res) {
+  // cek method
   if (req.method !== 'POST') {
     res.status(405).json({ error: true, message: 'mehtod tidak diijinkan' });
   }
 
+  // ambil nilai dari body
   const { title, content } = req.body;
+
   // validasi kosong atau tidak
   if (!title) {
     return res.status(400).json({ error: true, message: 'tidak ada title' });
