@@ -45,8 +45,8 @@ $ npx create-next-app@latest
 √ What is your project named? ... my-next-app
 √ Would you like to use TypeScript? ... No // typescript akan dibahas nanti
 √ Would you like to use ESLint? ...  Yes
-√ Would you like to use Tailwind CSS? ...  Yes
-√ Would you like to use `src/` directory? ...  Yes
+√ Would you like to use Tailwind CSS? ...  Yes // no jika kurang familiar dengan tailwind
+√ Would you like to use `src/` directory? ...  Yes // biar rapi
 √ Would you like to use App Router? (recommended) ... No // app router masih jarang digunakan
 √ Would you like to customize the default import alias (@/*)? ... No // menggunakan url yg umumnya dlu
 
@@ -77,8 +77,17 @@ const Post = mongoose.model('Post', new mongoose.Schema({
 }));
 ```
 
+untuk test
+endpoint
+http://localhost:3000/api/blogs/create
+method: post
+data:
+{
+"title":"nama lengkap",
+"content":"deskripsi singkat (siapa anda ketika ditanya)"
+}
 
-
+discreenshot hasilnya dan disimpan di folder screenshot
 
 
 
