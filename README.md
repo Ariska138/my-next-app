@@ -90,6 +90,6 @@ data:
 discreenshot hasilnya dan disimpan di folder screenshot
 
 ## Screenshot
-![sc](/screenshot/ss.png)
+![ss](/screenshot/ss.png)
 
 
