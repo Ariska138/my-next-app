@@ -51,4 +51,34 @@ $ npx create-next-app@latest
 √ Would you like to customize the default import alias (@/*)? ... No // menggunakan url yg umumnya dlu
 
 
+---
+```bush
+npm install mongoose
+```
+
+```js
+import mongoose from 'mongoose';
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/your-database-name', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+  }
+};
+
+const Post = mongoose.model('Post', new mongoose.Schema({
+  title: String,
+  content: String,
+}));
+```
+
+
+
+
+
 
