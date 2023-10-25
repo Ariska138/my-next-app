@@ -30,11 +30,11 @@ const Post = mongoose.model(
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    res.status(404).json({ error: true, message: 'mehtod tidak diijinkan' });
+    res.status(405).json({ error: true, message: 'mehtod tidak diijinkan' });
   }
 
   const { title, content } = req.body;
-  // validasi
+  // validasi kosong atau tidak
   if (!title) {
     return res.status(400).json({ error: true, message: 'tidak ada title' });
   }
@@ -43,6 +43,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: true, message: 'tidak ada content' });
   }
 
+  // validasi sesuai kreteria atau tidak
   if (title < 3 || title > 20) {
     return res.status(400).json({
       error: true,
@@ -57,7 +58,10 @@ export default async function handler(req, res) {
     });
   }
 
+  // jika sudah sesuai simpan
   const post = new Post({ title, content });
   await post.save();
+
+  // kasih tahu client
   return res.status(201).json(post);
 }
