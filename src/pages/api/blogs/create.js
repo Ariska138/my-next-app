@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const connectMongoDB = async () => {
   try {
     await mongoose.connect(
-      'mongodb+srv://ppqita:santri@ppqitadb.76fharf.mongodb.net/development',
+      'mongodb+srv://<user>:<password>@<cluster>.76fharf.mongodb.net/development',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -21,11 +21,18 @@ const Post = mongoose.model(
       type: String,
       require: true,
     },
-    content: String,
+    content: {
+      type: String,
+      require: true,
+    },
   })
 );
 
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(404).json({ error: true, message: 'mehtod tidak diijinkan' });
+  }
+
   const { title, content } = req.body;
   // validasi
   if (!title) {
